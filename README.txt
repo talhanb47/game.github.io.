@@ -1,0 +1,1 @@
+Copy the whole phonics_usb_game folder to your USB.\nKeep index.html and the images folder together.\nThen open index.html from the USB in a browser.\n

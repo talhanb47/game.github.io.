@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Phonics 2-Option Game</title>
+  <style>
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: linear-gradient(to bottom, #eaf6ff, #fff8dc);
+      text-align: center;
+      padding: 20px;
+    }
+
+    h1 {
+      color: #333;
+      margin-bottom: 10px;
+      font-size: 42px;
+    }
+
+    .topbar {
+      font-size: 24px;
+      font-weight: bold;
+      color: #222;
+      margin-bottom: 20px;
+    }
+
+    .game-box {
+      max-width: 1100px;
+      margin: 0 auto;
+      background: white;
+      border-radius: 24px;
+      padding: 30px 20px;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+    }
+
+    .letter-tag {
+      display: inline-block;
+      background: #dff0ff;
+      color: #125b91;
+      font-weight: bold;
+      padding: 10px 18px;
+      border-radius: 999px;
+      font-size: 22px;
+      margin-bottom: 10px;
+    }
+
+    .question-row {
+      display: grid;
+      grid-template-columns: 240px 320px 240px;
+      gap: 24px;
+      align-items: center;
+      justify-content: center;
+      margin-top: 20px;
+      margin-bottom: 20px;
+    }
+
+    .word-btn {
+      width: 100%;
+      min-height: 100px;
+      border: none;
+      border-radius: 22px;
+      font-size: 34px;
+      font-weight: bold;
+      cursor: pointer;
+      background: #f2f2f2;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      transition: transform 0.2s, background 0.2s;
+      padding: 12px 18px;
+    }
+
+    .word-btn:hover { transform: scale(1.03); }
+    .word-btn:active { transform: scale(0.97); }
+
+    .word-btn:disabled {
+      cursor: default;
+      opacity: 0.95;
+    }
+
+    .picture-box {
+      width: 300px;
+      height: 300px;
+      border-radius: 28px;
+      background: #fff7f0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: inset 0 0 0 4px #ffd9b3, 0 6px 14px rgba(0,0,0,0.08);
+      animation: floaty 2s ease-in-out infinite;
+      overflow: hidden;
+    }
+
+    .picture-box img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      display: block;
+    }
+
+    .correct {
+      background: #7CFC98 !important;
+      color: #124d1d;
+      animation: pop 0.35s ease;
+    }
+
+    .wrong {
+      background: #ff8c8c !important;
+      color: #6a1111;
+      animation: shake 0.35s ease;
+    }
+
+    .face {
+      font-size: 64px;
+      min-height: 80px;
+      margin-top: 8px;
+    }
+
+    .face.happy { animation: pop 0.35s ease; }
+    .face.sad { animation: shake 0.35s ease; }
+
+    .controls {
+      margin-top: 25px;
+    }
+
+    .control-btn {
+      padding: 12px 22px;
+      font-size: 18px;
+      font-weight: bold;
+      border: none;
+      border-radius: 14px;
+      cursor: pointer;
+      margin: 0 8px;
+      color: white;
+    }
+
+    .next-btn { background: #3b82f6; }
+    .reset-btn { background: #f59e0b; }
+    .music-btn { background: #10b981; }
+
+    .info {
+      font-size: 22px;
+      color: #444;
+      margin-top: 10px;
+      min-height: 32px;
+    }
+
+    .help {
+      margin-top: 20px;
+      color: #666;
+      font-size: 16px;
+    }
+
+    @keyframes pop {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.1); }
+      100% { transform: scale(1); }
+    }
+
+    @keyframes shake {
+      0% { transform: translateX(0); }
+      25% { transform: translateX(-8px); }
+      50% { transform: translateX(8px); }
+      75% { transform: translateX(-5px); }
+      100% { transform: translateX(0); }
+    }
+
+    @keyframes floaty {
+      0% { transform: translateY(0px); }
+      50% { transform: translateY(-8px); }
+      100% { transform: translateY(0px); }
+    }
+
+    @media (max-width: 900px) {
+      h1 { font-size: 30px; }
+
+      .question-row {
+        grid-template-columns: 1fr;
+        justify-items: center;
+      }
+
+      .picture-box {
+        width: 230px;
+        height: 230px;
+      }
+
+      .word-btn {
+        max-width: 320px;
+        font-size: 28px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <h1>Choose the Correct Word</h1>
+  <div class="topbar">Score: <span id="score">0</span> / <span id="total">18</span></div>
+
+  <div class="game-box">
+    <div class="letter-tag" id="letterTag">Letter: N</div>
+
+    <div class="question-row">
+      <button id="btn1" class="word-btn" onclick="checkAnswer('btn1')">Net</button>
+
+      <div class="picture-box">
+        <img id="pictureBox" src="images/net.png" alt="Picture card" />
+      </div>
+
+      <button id="btn2" class="word-btn" onclick="checkAnswer('btn2')">Nose</button>
+    </div>
+
+    <div class="info" id="message">Tap the correct word.</div>
+    <div class="face" id="face">🙂</div>
+
+    <div class="controls">
+      <button class="control-btn next-btn" onclick="nextQuestion()">Next</button>
+      <button class="control-btn reset-btn" onclick="resetGame()">Reset</button>
+      <button class="control-btn music-btn" onclick="toggleMusic()">Music: OFF</button>
+    </div>
+
+   
+  </div>
+
+  <!-- Your own looping background music -->
+  <audio id="bgMusic" loop>
+    <source src="images/music.mp3" type="audio/mpeg">
+  </audio>
+
+  <script>
+    const questions = [
+      { letter: 'N', image: 'images/net.png', correct: 'Net', wrong: 'Nose' },
+      { letter: 'N', image: 'images/nose.png', correct: 'Nose', wrong: 'Nine' },
+      { letter: 'N', image: 'images/nine.png', correct: 'Nine', wrong: 'Net' },
+
+      { letter: 'O', image: 'images/octopus.png', correct: 'Octopus', wrong: 'Ox' },
+      { letter: 'O', image: 'images/ox.png', correct: 'Ox', wrong: 'Otter' },
+      { letter: 'O', image: 'images/otter.png', correct: 'Otter', wrong: 'Octopus' },
+
+      { letter: 'P', image: 'images/pen.png', correct: 'Pen', wrong: 'Pig' },
+      { letter: 'P', image: 'images/pig.png', correct: 'Pig', wrong: 'Pink' },
+      { letter: 'P', image: 'images/pink.png', correct: 'Pink', wrong: 'Pen' },
+
+      { letter: 'Q', image: 'images/queen.png', correct: 'Queen', wrong: 'Quiz' },
+      { letter: 'Q', image: 'images/quiz.png', correct: 'Quiz', wrong: 'Quilt' },
+      { letter: 'Q', image: 'images/quilt.png', correct: 'Quilt', wrong: 'Queen' },
+
+      { letter: 'R', image: 'images/rabbit.png', correct: 'Rabbit', wrong: 'Robot' },
+      { letter: 'R', image: 'images/robot.png', correct: 'Robot', wrong: 'Red' },
+      { letter: 'R', image: 'images/red.png', correct: 'Red', wrong: 'Rabbit' },
+
+      { letter: 'S', image: 'images/snake.png', correct: 'Snake', wrong: 'Sun' },
+      { letter: 'S', image: 'images/sun.png', correct: 'Sun', wrong: 'Seven' },
+      { letter: 'S', image: 'images/seven.png', correct: 'Seven', wrong: 'Snake' }
+    ];
+
+    let currentIndex = 0;
+    let score = 0;
+    let answered = false;
+
+    // Keep correct / wrong sounds as before
+    let audioCtx = null;
+    let musicOn = true;
+
+    function getAudioCtx() {
+      if (!audioCtx) {
+        const AudioContextClass = window.AudioContext || window.webkitAudioContext;
+        if (AudioContextClass) audioCtx = new AudioContextClass();
+      }
+      return audioCtx;
+    }
+
+    function playTone(freq, duration, type = 'sine', volume = 0.08, delay = 0) {
+      const ctx = getAudioCtx();
+      if (!ctx) return;
+
+      const osc = ctx.createOscillator();
+      const gain = ctx.createGain();
+
+      osc.type = type;
+      osc.frequency.value = freq;
+      gain.gain.value = 0.0001;
+
+      osc.connect(gain);
+      gain.connect(ctx.destination);
+
+      const start = ctx.currentTime + delay;
+      const end = start + duration;
+
+      gain.gain.setValueAtTime(0.0001, start);
+      gain.gain.exponentialRampToValueAtTime(volume, start + 0.02);
+      gain.gain.exponentialRampToValueAtTime(0.0001, end);
+
+      osc.start(start);
+      osc.stop(end + 0.02);
+    }
+
+    function playCorrectSound() {
+      playTone(523.25, 0.18, 'triangle', 0.07, 0);
+      playTone(659.25, 0.18, 'triangle', 0.07, 0.18);
+      playTone(783.99, 0.26, 'triangle', 0.08, 0.36);
+    }
+
+    function playWrongSound() {
+      playTone(330, 0.22, 'sawtooth', 0.05, 0);
+      playTone(262, 0.30, 'sawtooth', 0.05, 0.18);
+    }
+
+    // Your own music track on loop
+    function toggleMusic() {
+      const music = document.getElementById('bgMusic');
+      const btn = document.querySelector('.music-btn');
+
+      musicOn = !musicOn;
+
+      if (musicOn) {
+        music.play();
+        btn.textContent = 'Music: ON';
+      } else {
+        music.pause();
+        btn.textContent = 'Music: OFF';
+      }
+    }
+
+    function shuffleSides(correct, wrong) {
+      return Math.random() > 0.5
+        ? { left: correct, right: wrong }
+        : { left: wrong, right: correct };
+    }
+
+    function loadQuestion() {
+      const q = questions[currentIndex];
+      const sides = shuffleSides(q.correct, q.wrong);
+
+      document.getElementById('letterTag').textContent = 'Letter: ' + q.letter;
+      document.getElementById('pictureBox').src = q.image;
+      document.getElementById('pictureBox').alt = q.correct;
+
+      const btn1 = document.getElementById('btn1');
+      const btn2 = document.getElementById('btn2');
+
+      btn1.textContent = sides.left;
+      btn2.textContent = sides.right;
+      btn1.dataset.value = sides.left;
+      btn2.dataset.value = sides.right;
+      btn1.className = 'word-btn';
+      btn2.className = 'word-btn';
+      btn1.disabled = false;
+      btn2.disabled = false;
+
+      document.getElementById('message').textContent = 'Tap the correct word.';
+      const face = document.getElementById('face');
+      face.textContent = '🙂';
+      face.className = 'face';
+
+      document.getElementById('total').textContent = questions.length;
+      answered = false;
+    }
+
+    function checkAnswer(btnId) {
+      if (answered) return;
+      answered = true;
+
+      const q = questions[currentIndex];
+      const clicked = document.getElementById(btnId);
+      const face = document.getElementById('face');
+      const btn1 = document.getElementById('btn1');
+      const btn2 = document.getElementById('btn2');
+
+      if (clicked.dataset.value === q.correct) {
+        clicked.classList.add('correct');
+        document.getElementById('message').textContent = 'Correct! Great job!';
+        face.textContent = '😊';
+        face.className = 'face happy';
+        playCorrectSound();
+        score++;
+      } else {
+        clicked.classList.add('wrong');
+        document.getElementById('message').textContent = 'Wrong. The correct word is ' + q.correct + '.';
+        face.textContent = '☹️';
+        face.className = 'face sad';
+        playWrongSound();
+
+        if (btn1.dataset.value === q.correct) btn1.classList.add('correct');
+        if (btn2.dataset.value === q.correct) btn2.classList.add('correct');
+      }
+
+      btn1.disabled = true;
+      btn2.disabled = true;
+      document.getElementById('score').textContent = score;
+    }
+
+    function showFinalScore() {
+      document.getElementById('letterTag').textContent = 'Game Finished';
+      document.getElementById('pictureBox').src = questions[0].image;
+      document.getElementById('pictureBox').alt = 'Finished';
+
+      const btn1 = document.getElementById('btn1');
+      const btn2 = document.getElementById('btn2');
+
+      btn1.textContent = 'Done';
+      btn2.textContent = 'Done';
+      btn1.disabled = true;
+      btn2.disabled = true;
+      btn1.className = 'word-btn';
+      btn2.className = 'word-btn';
+
+      document.getElementById('message').textContent =
+        'Great job! Your final score is ' + score + ' out of ' + questions.length + '.';
+
+      const face = document.getElementById('face');
+      if (score >= Math.ceil(questions.length * 0.7)) {
+        face.textContent = '🎉';
+        face.className = 'face happy';
+      } else {
+        face.textContent = '🙂';
+        face.className = 'face';
+      }
+    }
+
+    function nextQuestion() {
+      if (!answered) return;
+
+      currentIndex += 1;
+
+      if (currentIndex >= questions.length) {
+        showFinalScore();
+        return;
+      }
+
+      loadQuestion();
+    }
+
+    function resetGame() {
+      score = 0;
+      currentIndex = 0;
+      answered = false;
+      document.getElementById('score').textContent = score;
+      loadQuestion();
+    }
+
+    loadQuestion();
+  </script>
+</body>
+</html>
