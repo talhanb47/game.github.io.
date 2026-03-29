@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="300" height="300" viewBox="0 0 300 300">
+<rect width="300" height="300" rx="32" fill="#fff8ea"/>
+<text x="150" y="36" text-anchor="middle" font-family="Arial" font-size="20" font-weight="bold" fill="#ff9b1c">Orange</text>
+<circle cx='150' cy='150' r='75' fill='#ff9b1c'/><path d='M150 72 C160 52 190 52 200 72' stroke='#2d8a34' stroke-width='8' fill='none'/><ellipse cx='195' cy='70' rx='22' ry='10' fill='#53b65f' transform='rotate(-25 195 70)'/>
+<text x="150" y="284" text-anchor="middle" font-family="Arial" font-size="26" font-weight="bold" fill="#ff9b1c">ORANGE</text>
+</svg>

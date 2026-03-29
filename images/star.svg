@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="300" height="300" viewBox="0 0 300 300">
+<rect width="300" height="300" rx="32" fill="#fdf6ff"/>
+<text x="150" y="36" text-anchor="middle" font-family="Arial" font-size="20" font-weight="bold" fill="#f7c948">Star</text>
+<polygon points='150,55 173,118 240,118 186,158 206,225 150,185 94,225 114,158 60,118 127,118' fill='#f7c948' stroke='#d8a30a' stroke-width='5'/>
+<text x="150" y="284" text-anchor="middle" font-family="Arial" font-size="26" font-weight="bold" fill="#f7c948">STAR</text>
+</svg>

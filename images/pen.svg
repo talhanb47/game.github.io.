@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="300" height="300" viewBox="0 0 300 300">
+<rect width="300" height="300" rx="32" fill="#f5f3ff"/>
+<text x="150" y="36" text-anchor="middle" font-family="Arial" font-size="20" font-weight="bold" fill="#4567ff">Pen</text>
+<rect x='90' y='90' width='120' height='32' rx='14' fill='#4567ff' transform='rotate(35 150 150)'/><rect x='190' y='85' width='36' height='32' rx='6' fill='#273c99' transform='rotate(35 150 150)'/><polygon points='84,172 98,192 65,200' fill='#f6d5a1'/>
+<text x="150" y="284" text-anchor="middle" font-family="Arial" font-size="26" font-weight="bold" fill="#4567ff">PEN</text>
+</svg>

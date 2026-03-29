@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="300" height="300" viewBox="0 0 300 300">
+<rect width="300" height="300" rx="32" fill="#fffdf2"/>
+<text x="150" y="36" text-anchor="middle" font-family="Arial" font-size="20" font-weight="bold" fill="#ffbf00">Sun</text>
+<circle cx='150' cy='150' r='52' fill='#ffbf00'/><g stroke='#ffbf00' stroke-width='10' stroke-linecap='round'><line x1='150' y1='40' x2='150' y2='75'/><line x1='150' y1='225' x2='150' y2='260'/><line x1='40' y1='150' x2='75' y2='150'/><line x1='225' y1='150' x2='260' y2='150'/><line x1='72' y1='72' x2='96' y2='96'/><line x1='204' y1='204' x2='228' y2='228'/><line x1='228' y1='72' x2='204' y2='96'/><line x1='96' y1='204' x2='72' y2='228'/></g>
+<text x="150" y="284" text-anchor="middle" font-family="Arial" font-size="26" font-weight="bold" fill="#ffbf00">SUN</text>
+</svg>

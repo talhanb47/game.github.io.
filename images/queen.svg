@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="300" height="300" viewBox="0 0 300 300">
+<rect width="300" height="300" rx="32" fill="#fff8ef"/>
+<text x="150" y="36" text-anchor="middle" font-family="Arial" font-size="20" font-weight="bold" fill="#f2c230">Queen</text>
+<polygon points='85,185 105,95 140,145 150,85 160,145 195,95 215,185' fill='#f2c230' stroke='#c79a17' stroke-width='5'/><circle cx='105' cy='95' r='9' fill='#ff6b6b'/><circle cx='150' cy='85' r='9' fill='#6bc1ff'/><circle cx='195' cy='95' r='9' fill='#73d27f'/>
+<text x="150" y="284" text-anchor="middle" font-family="Arial" font-size="26" font-weight="bold" fill="#f2c230">QUEEN</text>
+</svg>

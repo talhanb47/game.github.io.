@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="300" height="300" viewBox="0 0 300 300">
+<rect width="300" height="300" rx="32" fill="#f7f0ff"/>
+<text x="150" y="36" text-anchor="middle" font-family="Arial" font-size="20" font-weight="bold" fill="#b77cff">Quilt</text>
+<rect x='70' y='80' width='160' height='160' rx='20' fill='#ffffff' stroke='#b77cff' stroke-width='6'/><rect x='70' y='80' width='53' height='53' fill='#ff8fab'/><rect x='123' y='80' width='54' height='53' fill='#ffd166'/><rect x='177' y='80' width='53' height='53' fill='#7bdff2'/><rect x='70' y='133' width='53' height='54' fill='#b2f7ef'/><rect x='123' y='133' width='54' height='54' fill='#cdb4db'/><rect x='177' y='133' width='53' height='54' fill='#f9bec7'/><rect x='70' y='187' width='53' height='53' fill='#ffd6a5'/><rect x='123' y='187' width='54' height='53' fill='#a0c4ff'/><rect x='177' y='187' width='53' height='53' fill='#fdffb6'/>
+<text x="150" y="284" text-anchor="middle" font-family="Arial" font-size="26" font-weight="bold" fill="#b77cff">QUILT</text>
+</svg>

@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="300" height="300" viewBox="0 0 300 300">
+<rect width="300" height="300" rx="32" fill="#fff7e6"/>
+<text x="150" y="36" text-anchor="middle" font-family="Arial" font-size="20" font-weight="bold" fill="#c47a2c">Nest</text>
+<ellipse cx='150' cy='170' rx='85' ry='35' fill='#c47a2c'/><ellipse cx='150' cy='165' rx='75' ry='25' fill='#d89b4a'/><path d='M85 150 Q110 135 130 150 T175 150 T215 150' stroke='#8b5a2b' stroke-width='6' fill='none'/><circle cx='130' cy='155' r='16' fill='#fffaf0'/><circle cx='165' cy='155' r='16' fill='#fffaf0'/>
+<text x="150" y="284" text-anchor="middle" font-family="Arial" font-size="26" font-weight="bold" fill="#c47a2c">NEST</text>
+</svg>

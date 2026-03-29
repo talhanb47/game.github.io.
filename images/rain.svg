@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="300" height="300" viewBox="0 0 300 300">
+<rect width="300" height="300" rx="32" fill="#eef6ff"/>
+<text x="150" y="36" text-anchor="middle" font-family="Arial" font-size="20" font-weight="bold" fill="#6fa8ff">Rain</text>
+<ellipse cx='150' cy='110' rx='70' ry='35' fill='#b8c7de'/><ellipse cx='105' cy='105' rx='28' ry='22' fill='#b8c7de'/><ellipse cx='195' cy='105' rx='28' ry='22' fill='#b8c7de'/><line x1='95' y1='155' x2='80' y2='205' stroke='#6fa8ff' stroke-width='8' stroke-linecap='round'/><line x1='125' y1='155' x2='110' y2='215' stroke='#6fa8ff' stroke-width='8' stroke-linecap='round'/><line x1='155' y1='155' x2='140' y2='210' stroke='#6fa8ff' stroke-width='8' stroke-linecap='round'/><line x1='185' y1='155' x2='170' y2='205' stroke='#6fa8ff' stroke-width='8' stroke-linecap='round'/><line x1='215' y1='155' x2='200' y2='215' stroke='#6fa8ff' stroke-width='8' stroke-linecap='round'/>
+<text x="150" y="284" text-anchor="middle" font-family="Arial" font-size="26" font-weight="bold" fill="#6fa8ff">RAIN</text>
+</svg>
